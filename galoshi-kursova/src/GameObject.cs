@@ -1,8 +1,10 @@
-﻿namespace galoshi_kursova.src;
+﻿using System.Numerics;
+
+namespace galoshi_kursova.src;
 
 internal abstract class GameObject
 {
-    public int position;
+    public Vector2 position;
     public bool isEnemy;
 
     protected int maxHealth;
