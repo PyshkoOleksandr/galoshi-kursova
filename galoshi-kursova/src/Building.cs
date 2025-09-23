@@ -1,7 +1,6 @@
-﻿namespace galoshi_kursova.src
-{
-    internal class Building
-    {
+﻿namespace galoshi_kursova.src;
 
-    }
+internal class Building
+{
+
 }
