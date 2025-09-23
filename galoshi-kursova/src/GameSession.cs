@@ -1,19 +1,21 @@
 namespace galoshi_kursova.src;
 
 using System.Collections.Generic;
+using System.Numerics;
 
 internal class GameSession
 {
+ 
+    public Unit[] selectedUnits = new Unit[5];
 
-    private int money;
     private int moneyGainRate;
     private int currentMoney;
-    private int MaxMoney;
+    private int maxMoney;
 
     private List<Unit> playerUnits;
     private List<Unit> enemyUnits;
 
-    ... other game state variables ...
+    //TODO ... other game state variables ...
 
     public void update(float deltaTime)
     {
@@ -21,7 +23,11 @@ internal class GameSession
 
         UpdateMoney(deltaTime);
 
+        CheckForDeadUnits();
+
         CheckPlayerSpawnRequests();
+
+        SpawnPlayerUnits();
 
         SpawmEnemies();
 
@@ -33,9 +39,9 @@ internal class GameSession
     {
         money += (int)(moneyGainRate * deltaTime);
 
-        if(currentMoney > MaxMoney)
+        if(currentMoney > maxMoney)
         {
-            currentMoney = MaxMoney;
+            currentMoney = maxMoney;
         }
 
     }
@@ -54,10 +60,49 @@ internal class GameSession
         
         CheckForDeadUnits;
     }
-
+    
     private void CheckForDeadUnits()
     {
         playerUnits.RemoveAll(unit => unit.Health <= 0);
         enemyUnits.RemoveAll(unit => unit.Health <= 0);
+    }
+
+    private void SpawnPlayerUnits()
+    {
+        //TODO logic to spawn player units
+    }
+
+    private void SpawmEnemies()
+    {
+        //TODO logic to spawn enemy units
+    }
+
+    private void CheckPlayerSpawnRequests()
+    {
+        //TODO Input handling logic to spawn player units
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (currentMoney >= selectedUnits[0].cost)
+            {
+                SpawnPlayerUnit(new Vector2(0, 0), UnitType.SomeUnit);
+                currentMoney -= 100;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if (currentMoney >= selectedUnits[1].cost)
+            {
+                SpawnPlayerUnit(new Vector2(0, 0), UnitType.SomeUnit);
+                currentMoney -= 200;
+            }
+        }
+
+    }
+
+    private void CheckGameEndConditions()
+    {
+        //TODO logic to check win/lose conditions
     }
 }
