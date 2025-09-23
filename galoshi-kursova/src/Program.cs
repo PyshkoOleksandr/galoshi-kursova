@@ -1,4 +1,4 @@
-﻿namespace galoshi_kursova;
+﻿namespace galoshi_kursova.src;
 
 internal static class Program
 {
