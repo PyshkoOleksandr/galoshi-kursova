@@ -9,16 +9,16 @@ internal abstract class Unit : GameObject
     protected int attackDamage;
     protected float attackCooldownS;
 
-    protected virtual void move()
+    protected virtual void Move()
     {
         position += speed;
     }
 
-    protected virtual void attack(GameObject target)
+    protected virtual void Attack(GameObject target)
     {
         if (Vector2.Distance(position, target.position) <= attackRange)
         {
-            target.takeDamage(attackDamage);
+            target.TakeDamage(attackDamage);
         }
     }
 }
