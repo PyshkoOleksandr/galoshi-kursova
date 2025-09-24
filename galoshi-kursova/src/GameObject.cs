@@ -10,15 +10,17 @@ internal abstract class GameObject
     protected int maxHealth;
     protected int health;
 
-    public virtual void takeDamage(int amount)
+    public virtual void TakeDamage(int amount)
     {
         health -= amount;
         if (health <= 0)
         {
-            died();
+            Died();
         }
     }
 
-    protected abstract void died();
+    public virtual void Update(float deltaTime) {}
+
+    protected abstract void Died();
 }
 

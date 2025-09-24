@@ -17,8 +17,7 @@ internal class GameSession
 
     //TODO ... other game state variables ...
 
-    private Player player = new Player;
-
+    private Player player = new Player();
     private InputManager inputManager = new InputManager();
 
     public void update(float deltaTime)
