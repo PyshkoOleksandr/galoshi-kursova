@@ -17,6 +17,10 @@ internal class GameSession
 
     //TODO ... other game state variables ...
 
+    private Player player = new Player;
+
+    private InputManager inputManager = new InputManager();
+
     public void update(float deltaTime)
     {
         UpdateUnits(deltaTime);
@@ -27,17 +31,13 @@ internal class GameSession
 
         CheckPlayerSpawnRequests();
 
-        SpawnPlayerUnits();
-
-        SpawmEnemies();
-
         CheckGameEndConditions();
 
     }
 
     private void UpdateMoney(float deltaTime)
     {
-        money += (int)(moneyGainRate * deltaTime);
+        currentMoney += (int)(moneyGainRate * deltaTime);
 
         if(currentMoney > maxMoney)
         {
@@ -63,18 +63,8 @@ internal class GameSession
     
     private void CheckForDeadUnits()
     {
-        playerUnits.RemoveAll(unit => unit.Health <= 0);
-        enemyUnits.RemoveAll(unit => unit.Health <= 0);
-    }
-
-    private void SpawnPlayerUnits()
-    {
-        //TODO logic to spawn player units
-    }
-
-    private void SpawmEnemies()
-    {
-        //TODO logic to spawn enemy units
+        playerUnits.RemoveAll(unit => unit.health <= 0);
+        enemyUnits.RemoveAll(unit => unit.health <= 0);
     }
 
     private void CheckPlayerSpawnRequests()
@@ -85,7 +75,7 @@ internal class GameSession
         {
             if (currentMoney >= selectedUnits[0].cost)
             {
-                SpawnPlayerUnit(new Vector2(0, 0), UnitType.SomeUnit);
+                SpawnPlayerUnit;
                 currentMoney -= 100;
             }
         }
@@ -94,7 +84,7 @@ internal class GameSession
         {
             if (currentMoney >= selectedUnits[1].cost)
             {
-                SpawnPlayerUnit(new Vector2(0, 0), UnitType.SomeUnit);
+                SpawnPlayerUnit;
                 currentMoney -= 200;
             }
         }
