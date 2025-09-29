@@ -61,7 +61,10 @@ public class GameSession
     // TODO move to Player class
     public void UpgradeBuilding()
     {
-        if ((Money < _playerBuilding.UpgradeCost) || _playerBuilding.IsMax()) return;
+        if ((Money < _playerBuilding.UpgradeCost) || _playerBuilding.IsMax())
+        {
+            return;
+        }
 
         _playerBuilding.Upgrade();
         _moneyGainRateSec += MoneyGainRateIncrement;
