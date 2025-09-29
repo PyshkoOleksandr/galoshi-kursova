@@ -4,12 +4,20 @@ namespace galoshi_kursova.src;
 
 public class Unit : GameObject
 {
+    private int _cost;
+
     protected int AttackDamage;
 
     protected float AttackRange;
     protected float AttackCooldownSec;
 
     protected Vector2 Speed;
+
+    public int Cost
+    {
+        get { return _cost; }
+        protected set { _cost = Math.Max(0, value); }
+    }
 
     public virtual void Move()
     {
