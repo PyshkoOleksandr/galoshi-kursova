@@ -1,8 +1,3 @@
-##########################################
-# Naming conventions (Виправлено та спрощено)
-# Усі правила встановлені на рівень 'error'.
-##########################################
-
 [*.{cs,vb}]
 
 ## Naming styles
@@ -17,7 +12,6 @@ dotnet_naming_style._camelCase.required_prefix = _
 
 
 ## Rules
-
 # 1. Private Fields (Instance/Static non-const) - _camelCase (SA1306)
 dotnet_naming_symbols.private_field_symbol.applicable_kinds = field
 dotnet_naming_symbols.private_field_symbol.applicable_accessibilities = private
@@ -49,7 +43,6 @@ dotnet_naming_rule.static_mutable_field_naming.style = s_pascal_case_style # З�
 dotnet_naming_rule.static_mutable_field_naming.severity = error
 
 # 4. Classes, Structs, Properties, Methods, Non-Private Mutable Fields, etc. (PascalCase)
-# Це правило універсально охоплює всі інші члени, включаючи захищені поля-змінні та публічні методи/властивості.
 dotnet_naming_symbols.public_members_symbol.applicable_kinds = class, struct, enum, property, method, local_function, event, namespace, delegate, field
 dotnet_naming_symbols.public_members_symbol.applicable_accessibilities = public, internal, protected, protected_internal, private_protected
 dotnet_naming_rule.public_members_naming.symbols = public_members_symbol
