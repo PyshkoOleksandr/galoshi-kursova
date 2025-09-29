@@ -2,23 +2,25 @@
 
 namespace galoshi_kursova.src;
 
-internal abstract class Unit : GameObject
+public class Unit : GameObject
 {
-    protected Vector2 speed;
-    protected float attackRange;
-    protected int attackDamage;
-    protected float attackCooldownS;
+    protected int AttackDamage;
 
-    protected virtual void move()
+    protected float AttackRange;
+    protected float AttackCooldownSec;
+
+    protected Vector2 Speed;
+
+    public virtual void Move()
     {
-        position += speed;
+        Position += Speed;
     }
 
-    protected virtual void attack(GameObject target)
+    protected virtual void Attack(GameObject target)
     {
-        if (Vector2.Distance(position, target.position) <= attackRange)
+        if (Vector2.Distance(Position, target.Position) <= AttackRange)
         {
-            target.takeDamage(attackDamage);
+            target.TakeDamage(AttackDamage);
         }
     }
 }

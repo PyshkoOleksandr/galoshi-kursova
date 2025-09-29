@@ -2,23 +2,50 @@
 
 namespace galoshi_kursova.src;
 
-internal abstract class GameObject
+public abstract class GameObject
 {
-    public Vector2 position;
-    public bool isEnemy;
+    public Vector2 Position;
 
-    protected int maxHealth;
-    protected int health;
+    private int _maxHealth;
+    private int _health;
 
-    public virtual void takeDamage(int amount)
+    public GameObject(Vector2 position, int maxHealth = 100)
     {
-        health -= amount;
-        if (health <= 0)
-        {
-            died();
+        Position = position;
+        MaxHealth = maxHealth;
+        Health = maxHealth;
+    }
+
+    public GameObject() : this(new Vector2(0f, 0f)) { }
+
+    public int MaxHealth
+    {
+        get { return _maxHealth; }
+        set { _maxHealth = Math.Max(0, value); }
+    }
+
+    public int Health
+    {
+        get { return _health; }
+        set { 
+            if (value <= 0)
+            {
+                _health = Math.Min(Math.Max(0, value), _maxHealth); 
+                Died();
+            }
         }
     }
 
-    protected abstract void died();
+    public virtual void TakeDamage(int amount)
+    {
+        Health -= amount;
+        if (Health <= 0)
+        {
+            Died();
+        }
+    }
+    public virtual void Update(float deltaTime) { }
+
+    protected virtual void Died() { }
 }
 

@@ -1,27 +1,51 @@
 namespace galoshi_kursova.src;
 
 using System.Collections.Generic;
-using System.Numerics;
 
-internal class GameSession
+public class GameSession
 {
- 
-    public Unit[] selectedUnits = new Unit[5];
+    public Unit[] SelectedUnits = new Unit[5];
 
-    private int moneyGainRate;
-    private int currentMoney;
-    private int maxMoney;
+    private const int MaxMoneyIncrement = 50;
+    private const float MoneyGainRateIncrement = 0.5f;
 
-    private List<Unit> playerUnits;
-    private List<Unit> enemyUnits;
+    private int _maxMoney;
 
-    //TODO ... other game state variables ...
+    private float _currentMoney;
+    private float _moneyGainRateSec;
 
-    private Player player = new Player;
+    private readonly Player _player = new();
+    private readonly Building _playerBuilding = new();
+    private readonly Building _enemyBuilding = new();
 
-    private InputManager inputManager = new InputManager();
+    private InputManager _inputManager = new();
 
-    public void update(float deltaTime)
+    private List<Unit> _playerUnits = new(20);
+    private List<Unit> _enemyUnits = new(20);
+
+    // TODO ... other game state variables ...
+
+    GameSession(Unit[] selectedUnits)
+    {
+        SelectedUnits = selectedUnits;
+        _moneyGainRateSec = 1.0f;
+        _currentMoney = 0.0f;
+        _maxMoney = 100;
+    }
+
+    public float Money
+    {
+        get { return (int)_currentMoney; }
+        set { _currentMoney = Math.Min(Math.Max(0.0f, value), MaxMoney); }
+    }
+
+    private int MaxMoney
+    {
+        get { return (int)_maxMoney; }
+        set { _maxMoney = Math.Max(0, value); }
+    }
+
+    public void Update(float deltaTime)
     {
         UpdateUnits(deltaTime);
 
@@ -32,63 +56,76 @@ internal class GameSession
         CheckPlayerSpawnRequests();
 
         CheckGameEndConditions();
+    }
 
+    // TODO move to Player class
+    public void UpgradeBuilding()
+    {
+        if ((Money < _playerBuilding.UpgradeCost) || _playerBuilding.IsMax()) return;
+
+        _playerBuilding.Upgrade();
+        _moneyGainRateSec += MoneyGainRateIncrement;
+        MaxMoney += MaxMoneyIncrement;
     }
 
     private void UpdateMoney(float deltaTime)
     {
-        currentMoney += (int)(moneyGainRate * deltaTime);
+        _currentMoney += _moneyGainRateSec * deltaTime;
 
-        if(currentMoney > maxMoney)
+        if(_currentMoney > _maxMoney)
         {
-            currentMoney = maxMoney;
+            _currentMoney = _maxMoney;
         }
 
     }
 
     private void UpdateUnits(float deltaTime)
     {
-        for(int i = 0; i < playerUnits.Count; i++)
+        for(int i = 0; i < _playerUnits.Count; i++)
         {
-            playerUnits[i].Update(deltaTime);
+            _playerUnits[i].Update(deltaTime);
         }
 
-        for(int i = 0; i < enemyUnits.Count; i++)
+        for(int i = 0; i < _enemyUnits.Count; i++)
         {
-            enemyUnits[i].Update(deltaTime);
+            _enemyUnits[i].Update(deltaTime);
         }
         
-        CheckForDeadUnits;
+        CheckForDeadUnits();
     }
     
     private void CheckForDeadUnits()
     {
-        playerUnits.RemoveAll(unit => unit.health <= 0);
-        enemyUnits.RemoveAll(unit => unit.health <= 0);
+        _playerUnits.RemoveAll(unit => unit.Health <= 0);
+        _enemyUnits.RemoveAll(unit => unit.Health <= 0);
     }
 
     private void CheckPlayerSpawnRequests()
     {
         //TODO Input handling logic to spawn player units
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (_inputManager.GetKeyDown(KeyCode.Alpha1))
         {
-            if (currentMoney >= selectedUnits[0].cost)
+            if (_currentMoney >= SelectedUnits[0].Cost)
             {
-                SpawnPlayerUnit;
-                currentMoney -= 100;
+                SpawnPlayerUnit();
+                _currentMoney -= 100;
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (_inputManager.GetKeyDown(KeyCode.Alpha2))
         {
-            if (currentMoney >= selectedUnits[1].cost)
+            if (_currentMoney >= SelectedUnits[1].Cost)
             {
-                SpawnPlayerUnit;
-                currentMoney -= 200;
+                SpawnPlayerUnit();
+                _currentMoney -= 200;
             }
         }
+    }
 
+    private void SpawnPlayerUnit()
+    {
+        // TODO
     }
 
     private void CheckGameEndConditions()
