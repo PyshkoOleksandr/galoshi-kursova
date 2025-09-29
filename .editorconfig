@@ -1,8 +1,3 @@
-##########################################
-# Naming conventions (Виправлено та спрощено)
-# Усі правила встановлені на рівень 'error'.
-##########################################
-
 [*.{cs,vb}]
 
 ## Naming styles
@@ -17,7 +12,6 @@ dotnet_naming_style._camelCase.required_prefix = _
 
 
 ## Rules
-
 # 1. Private Fields (Instance/Static non-const) - _camelCase (SA1306)
 dotnet_naming_symbols.private_field_symbol.applicable_kinds = field
 dotnet_naming_symbols.private_field_symbol.applicable_accessibilities = private
