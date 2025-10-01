@@ -19,6 +19,7 @@ public class Building : GameObject
         return Level >= MaxLevel;
     }
 
+    // TODO Test Dasha
     public int UpgradeCost
     {
         private set { _upgradeCost = Math.Max(0, value); }
@@ -31,6 +32,7 @@ public class Building : GameObject
         get { return _level; }
     }
 
+    // TODO Test Dasha
     public void Upgrade() 
     {
         UpgradeCost += UpgradeCostIncrement;

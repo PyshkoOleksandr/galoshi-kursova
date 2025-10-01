@@ -59,6 +59,7 @@ public class GameSession
     }
 
     // TODO move to Player class
+    // Ya
     public void UpgradeBuilding()
     {
         if ((Money < _playerBuilding.UpgradeCost) || _playerBuilding.IsMax())
@@ -71,6 +72,7 @@ public class GameSession
         MaxMoney += MaxMoneyIncrement;
     }
 
+    // TODO Test Maks
     private void UpdateMoney(float deltaTime)
     {
         _currentMoney += _moneyGainRateSec * deltaTime;
@@ -97,12 +99,14 @@ public class GameSession
         CheckForDeadUnits();
     }
     
+    // TODO Test PetrykArtem
     private void CheckForDeadUnits()
     {
         _playerUnits.RemoveAll(unit => unit.Health <= 0);
         _enemyUnits.RemoveAll(unit => unit.Health <= 0);
     }
 
+    // TODO Test PyshkoOleksandr
     private void CheckPlayerSpawnRequests()
     {
         //TODO Input handling logic to spawn player units
