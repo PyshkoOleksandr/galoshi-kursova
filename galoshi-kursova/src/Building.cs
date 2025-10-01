@@ -1,4 +1,4 @@
-﻿namespace galoshi_kursova.src;
+﻿namespace GaloshiKursova.Src;
 
 public class Building : GameObject
 {

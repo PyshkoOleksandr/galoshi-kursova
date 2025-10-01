@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace galoshi_kursova.src;
+namespace GaloshiKursova.Src;
 
 public class Unit : GameObject
 {
