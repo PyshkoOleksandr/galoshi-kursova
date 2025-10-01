@@ -2,8 +2,8 @@
 
 public class Building : GameObject
 {
-    private const int MaxLevel = 3;
-    private const int UpgradeCostIncrement = 50;
+    public const int MaxLevel = 3;
+    public const int UpgradeCostIncrement = 50;
 
     private int _upgradeCost;
     private int _level;
@@ -27,7 +27,7 @@ public class Building : GameObject
 
     public int Level
     {
-        private set { _level = Math.Min(Math.Max(1, value), MaxLevel); }
+        set { _level = Math.Min(Math.Max(1, value), MaxLevel); }
         get { return _level; }
     }
 

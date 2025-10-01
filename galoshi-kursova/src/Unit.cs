@@ -2,7 +2,7 @@
 
 namespace GaloshiKursova.Src;
 
-public class Unit : GameObject
+public abstract class Unit : GameObject
 {
     private int _cost;
 
