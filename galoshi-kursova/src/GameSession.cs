@@ -18,8 +18,6 @@ public class GameSession
     private readonly Building _playerBuilding = new();
     private readonly Building _enemyBuilding = new();
 
-    private InputManager _inputManager = new();
-
     private List<Unit> _playerUnits = new(20);
     private List<Unit> _enemyUnits = new(20);
 
@@ -111,7 +109,7 @@ public class GameSession
     {
         //TODO Input handling logic to spawn player units
 
-        if (_inputManager.GetKeyDown(KeyCode.Alpha1))
+        if (InputManager.GetKeyDown(KeyCode.Alpha1))
         {
             if (_currentMoney >= SelectedUnits[0].Cost)
             {
@@ -120,7 +118,7 @@ public class GameSession
             }
         }
 
-        if (_inputManager.GetKeyDown(KeyCode.Alpha2))
+        if (InputManager.GetKeyDown(KeyCode.Alpha2))
         {
             if (_currentMoney >= SelectedUnits[1].Cost)
             {
