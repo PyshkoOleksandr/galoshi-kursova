@@ -11,7 +11,7 @@ public class BuildingTests
         Building building = new();
         building.Level = Building.MaxLevel;
 
-        Assert.IsTrue(building.Level == Building.MaxLevel);
+        Assert.IsTrue(building.IsMax());
     }
 
     [TestMethod]
@@ -20,6 +20,6 @@ public class BuildingTests
         Building building = new();
         building.Level = Building.MaxLevel - 1;
 
-        Assert.IsTrue(building.Level != Building.MaxLevel);
+        Assert.IsFalse(building.IsMax());
     }
 }
