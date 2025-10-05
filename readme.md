@@ -9,6 +9,9 @@ Our project is inspired by classic games **Age of War** and **Battle Cats**, so 
 
 ## Laboratory Works
 
+### Use Case Diagram
+<img width="787" height="847" alt="image" src="https://github.com/user-attachments/assets/3e762c62-31c1-431d-b40f-1900227a75c6" />
+
 ### Class diagram:
 <img width="1152" height="681" alt="ClassDiagram" src="https://github.com/user-attachments/assets/ff1e29a9-cff8-49fc-99dc-ebad6672cb5e" />
 
@@ -55,4 +58,5 @@ Our project is inspired by classic games **Age of War** and **Battle Cats**, so 
 Our project was inspired by games:
 - **Age of War**  
 - **Battle Cats**  
+
 
