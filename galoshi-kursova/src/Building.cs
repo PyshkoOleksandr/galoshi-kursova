@@ -21,7 +21,7 @@ public class Building : GameObject
 
     public int UpgradeCost
     {
-        private set { _upgradeCost = Math.Max(0, value); }
+        set { _upgradeCost = Math.Max(0, value); }
         get { return _upgradeCost; }
     }
 
