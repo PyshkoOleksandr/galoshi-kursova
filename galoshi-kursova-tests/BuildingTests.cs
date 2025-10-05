@@ -37,7 +37,7 @@ public class BuildingTests
         Building building = new();
         building.UpgradeCost = 100;
         Assert.AreEqual(100, building.UpgradeCost);
-    }
+}
     
     [TestMethod]
     public void Upgrade_IncreaseLevelBuilding()

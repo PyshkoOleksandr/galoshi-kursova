@@ -1,4 +1,4 @@
-﻿namespace galoshi_kursova.src
+﻿namespace GaloshiKursova.Src
 {
     public enum KeyCode
     {
@@ -7,11 +7,19 @@
 
     public class InputManager
     {
+        private static readonly InputManager _instance = new();
         private SortedSet<KeyCode> _pressedKeys = new();
 
-        public bool GetKeyDown(KeyCode keyCode)
+        private InputManager() {}
+
+        public static InputManager Get()
         {
-            return _pressedKeys.Contains(keyCode);
+            return _instance;
+        }
+
+        public static bool GetKeyDown(KeyCode keyCode)
+        {
+            return _instance._pressedKeys.Contains(keyCode);
         }
     }
 }

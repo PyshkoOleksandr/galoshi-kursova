@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
 
-namespace galoshi_kursova.src;
+namespace GaloshiKursova.Src;
 
-public class Unit : GameObject
+public abstract class Unit : GameObject
 {
     private int _cost;
 

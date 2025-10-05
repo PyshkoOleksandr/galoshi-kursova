@@ -1,9 +1,9 @@
-﻿namespace galoshi_kursova.src;
+﻿namespace GaloshiKursova.Src;
 
 public class Building : GameObject
 {
-    private const int MaxLevel = 3;
-    private const int UpgradeCostIncrement = 50;
+    public const int MaxLevel = 3;
+    public const int UpgradeCostIncrement = 50;
 
     private int _upgradeCost;
     private int _level;
@@ -19,6 +19,7 @@ public class Building : GameObject
         return Level >= MaxLevel;
     }
 
+    // TODO Test Dasha
     public int UpgradeCost
     {
         set { _upgradeCost = Math.Max(0, value); }
@@ -27,10 +28,11 @@ public class Building : GameObject
 
     public int Level
     {
-        private set { _level = Math.Min(Math.Max(1, value), MaxLevel); }
+        set { _level = Math.Min(Math.Max(1, value), MaxLevel); }
         get { return _level; }
     }
 
+    // TODO Test Dasha
     public void Upgrade() 
     {
         UpgradeCost += UpgradeCostIncrement;

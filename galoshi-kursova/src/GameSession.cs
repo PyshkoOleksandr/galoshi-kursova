@@ -1,4 +1,4 @@
-namespace galoshi_kursova.src;
+namespace GaloshiKursova.Src;
 
 using System.Collections.Generic;
 
@@ -17,8 +17,6 @@ public class GameSession
     private readonly Player _player = new();
     private readonly Building _playerBuilding = new();
     private readonly Building _enemyBuilding = new();
-
-    private InputManager _inputManager = new();
 
     private List<Unit> _playerUnits = new(20);
     private List<Unit> _enemyUnits = new(20);
@@ -59,6 +57,7 @@ public class GameSession
     }
 
     // TODO move to Player class
+    // Ya
     public void UpgradeBuilding()
     {
         if ((Money < _playerBuilding.UpgradeCost) || _playerBuilding.IsMax())
@@ -71,6 +70,7 @@ public class GameSession
         MaxMoney += MaxMoneyIncrement;
     }
 
+    // TODO Test Maks
     private void UpdateMoney(float deltaTime)
     {
         _currentMoney += _moneyGainRateSec * deltaTime;
@@ -97,17 +97,19 @@ public class GameSession
         CheckForDeadUnits();
     }
     
+    // TODO Test PetrykArtem
     private void CheckForDeadUnits()
     {
         _playerUnits.RemoveAll(unit => unit.Health <= 0);
         _enemyUnits.RemoveAll(unit => unit.Health <= 0);
     }
 
+    // TODO Test PyshkoOleksandr
     private void CheckPlayerSpawnRequests()
     {
         //TODO Input handling logic to spawn player units
 
-        if (_inputManager.GetKeyDown(KeyCode.Alpha1))
+        if (InputManager.GetKeyDown(KeyCode.Alpha1))
         {
             if (_currentMoney >= SelectedUnits[0].Cost)
             {
@@ -116,7 +118,7 @@ public class GameSession
             }
         }
 
-        if (_inputManager.GetKeyDown(KeyCode.Alpha2))
+        if (InputManager.GetKeyDown(KeyCode.Alpha2))
         {
             if (_currentMoney >= SelectedUnits[1].Cost)
             {
