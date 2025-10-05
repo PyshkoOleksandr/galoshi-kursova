@@ -79,7 +79,6 @@ public class GameSession
         {
             _currentMoney = _maxMoney;
         }
-
     }
 
     private void UpdateUnits(float deltaTime)
