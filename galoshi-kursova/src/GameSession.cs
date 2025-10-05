@@ -23,7 +23,7 @@ public class GameSession
 
     // TODO ... other game state variables ...
 
-    GameSession(Unit[] selectedUnits)
+    public GameSession(Unit[] selectedUnits)
     {
         SelectedUnits = selectedUnits;
         _moneyGainRateSec = 1.0f;
@@ -37,7 +37,7 @@ public class GameSession
         set { _currentMoney = Math.Min(Math.Max(0.0f, value), MaxMoney); }
     }
 
-    private int MaxMoney
+    public int MaxMoney
     {
         get { return (int)_maxMoney; }
         set { _maxMoney = Math.Max(0, value); }
@@ -79,7 +79,6 @@ public class GameSession
         {
             _currentMoney = _maxMoney;
         }
-
     }
 
     private void UpdateUnits(float deltaTime)
@@ -97,7 +96,7 @@ public class GameSession
         CheckForDeadUnits();
     }
     
-    // TODO Test PetrykArtem
+
     private void CheckForDeadUnits()
     {
         _playerUnits.RemoveAll(unit => unit.Health <= 0);
