@@ -5,34 +5,26 @@ public class Building : GameObject
     public const int MaxLevel = 3;
     public const int UpgradeCostIncrement = 50;
 
-    private int _upgradeCost;
-    private int _level;
-
-    public Building()
-    {
-        _upgradeCost = 50;
-        _level = 1;
-    }
+    private int _upgradeCost = 50;
+    private int _level = 1;
 
     public bool IsMax()
     {
         return Level >= MaxLevel;
     }
 
-    // TODO Test Dasha
     public int UpgradeCost
     {
-        set { _upgradeCost = Math.Max(0, value); }
-        get { return _upgradeCost; }
+        set => _upgradeCost = Math.Max(0, value);
+        get => _upgradeCost;
     }
 
     public int Level
     {
-        set { _level = Math.Min(Math.Max(1, value), MaxLevel); }
-        get { return _level; }
+        set => _level = Math.Min(Math.Max(1, value), MaxLevel);
+        get => _level;
     }
 
-    // TODO Test Dasha
     public void Upgrade() 
     {
         UpgradeCost += UpgradeCostIncrement;
